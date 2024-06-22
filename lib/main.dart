@@ -145,50 +145,47 @@ class _HomePageState extends State<HomePage> {
     var appState = context.watch<AppState>();
 
     return Scaffold(
-      body: IntrinsicHeight(
-        child: Center(
-          child: AspectRatio(
-            aspectRatio: 9 / 16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Input/Output Display
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
-                  alignment: Alignment.bottomRight,
-                  child: Text(
-                    appState.display,
-                    style: TextStyle(fontSize: 48.0),
-                  ),
+      body: Center(
+        // Center the calculator horizontally
+        child: SizedBox(
+          width: 400, // Adjust this value for your desired width
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Input/Output Display
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  appState.display,
+                  style: TextStyle(fontSize: 48.0),
                 ),
-                // Calculator Grid
-                Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4),
-                    itemCount: buttonLabels.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final buttonText = buttonLabels[index];
-                      return ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
+              ),
+              // Calculator Grid
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4),
+                  itemCount: buttonLabels.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final buttonText = buttonLabels[index];
+                    return ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                        onPressed: () {
-                          appState._handleButtonPress(buttonText);
-                        },
-                        child: Text(buttonText),
-                      );
-                    },
-                  ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      ),
+                      onPressed: () {
+                        appState._handleButtonPress(buttonText);
+                      },
+                      child: Text(buttonText),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
