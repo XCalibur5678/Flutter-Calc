@@ -19,8 +19,8 @@ class App extends StatelessWidget {
         title: 'Calculator App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 0, 0, 0)),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color.fromARGB(255, 25, 101, 189)),
         ),
         home: const HomePage(),
       ),
@@ -29,7 +29,7 @@ class App extends StatelessWidget {
 }
 
 class AppState extends ChangeNotifier {
-  // Using strings for now for easier display and concatenation
+  // Using strings for easier display and concatenation
   String _display = '0'; // Store the input/output display
   String _currentInput = ''; // Store the current number being entered
   String _operator = ''; // Store the selected operator
